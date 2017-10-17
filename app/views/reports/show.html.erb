@@ -1,0 +1,187 @@
+
+    <style>
+        html, body {
+            height:100%;
+        }
+
+        body {
+        padding-top: 55px;
+        }
+
+        .container-fluid, .full {
+            height:100%;
+        }
+
+        #sidebar {
+            background-color:#f5f5f5;
+        }
+
+        #download_pdf{
+			position: fixed;
+			float: right;
+			right: 10px;
+			background: lightblue;
+			text-decoration: none;
+			padding: 10px 20px;
+			color: black;
+        }
+        @media (min-width:768px) {
+          #sidebar {
+              width: inherit;
+              min-width: 270px;
+              max-width: 270px;
+              min-height: 100%;
+              position:relative;
+          }
+          #main_area {
+              width:calc(100% - 270px);
+          }
+
+          #sidebar ul  {
+            border-bottom: 2px solid #d9d9d9;
+          }
+
+          #sidebar .breadcrumb {
+            background-color: #d9d9d9; 
+          }
+
+          .breadcrumb a { 
+            font-size: 12px !important; 
+          }
+
+          .breadcrumb li { 
+            font-size: 12px !important; 
+          }
+
+          .breadcrumb > li + li:before {
+            color: #000000;
+            content: ">>";
+            /*padding: 0 5px;*/
+          }
+
+        }
+    </style>  
+    <div class="container-fluid">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <%= link_to "Download PDF",
+  report_path(@report, format: "pdf"),
+  target: "_blank",
+  id: "download_pdf" %>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              <img alt='Brand' src='/assets/glandon-2b6d2f8001297e608ce8193ba501310bb52f6bc3ad2da9f7a6767278a3a21776.png' height='25'>
+            </a>
+            <a class="navbar-brand" href="/"><%= @report.client %> - <%= @report.date %></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <p class="navbar-text">
+                  daveih1664@gmail.com 
+                  [System Admin, Content Admin]
+              </p>
+                <li><a id="users_button" href="/users"><span class="glyphicon glyphicon-user"></span>&nbsp;</a></li>
+              <li>
+                <a id="print_button" href="">
+                  <span class="glyphicon glyphicon-print"></span>
+</a>              </li>
+              <li><a id="settings_button" href="/user_settings"><span class="glyphicon glyphicon-cog"></span>&nbsp;</a></li>
+              <li><a id="home_button" href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;</a></li>
+              <li>
+                <a id="logoff_button" rel="nofollow" data-method="delete" href="/users/sign_out">
+                  <span class="glyphicon glyphicon-off"></span>
+</a>              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="row full">
+        <div id="sidebar" class="col-md-2">
+          <div class="nav nav_pills nav-stacked">
+            <div>
+              <ol class="breadcrumb"><li id="breadcrumb_1"><a href="/forms">Forms</a></li><li id="breadcrumb_2"><a href="/forms/history?identifier=BC+DEMO&scope_id=NS-ACME">BC DEMO</a></li><li id="breadcrumb_3"><a href="/forms/view?id=F-ACME_BCDEMO&namespace=http%3A%2F%2Fwww.assero.co.uk%2FMDRForms%2FACME%2FV1">View: V0.1.0</a></li><li id="breadcrumb_4" class="active">CRF</li></ol>
+            </div>
+            <ul class="nav"> 
+              <li><a id="main_nav_d" href="/">Dashboard</a></li>
+            </ul>
+              <ul class="nav"> 
+                <li><a id="main_nav_in" href="/iso_namespaces">Namespaces</a></li>
+                <li><a id="main_nav_ira" href="/iso_registration_authorities">Registration Authorities</a></li>
+                <li><a id="main_nav_im1" href="/iso_managed">Managed Items</a></li>
+                <li><a id="main_nav_el" href="/tokens">Edit Locks</a></li>
+                <li><a id="main_nav_at1" href="/audit_trail">Audit Trail</a></li>
+  	 		      </ul>
+              <ul class="nav"> 
+                  <li><a id="main_nav_u" href="/uploads">Upload</a></li>
+                  <li><a id="main_nav_bj" href="/backgrounds">Background Jobs</a></li>
+                <li><a id="main_nav_ahr" href="/ad_hoc_reports">Ad Hoc Reports</a></li>
+              </ul>
+              <ul class="nav"> 
+                <li><a id="main_nav_ics" href="/iso_concept_systems">Classifications (tags)</a></li>
+                <li><a id="main_nav_ma" href="/markdown_engines">Markdown</a></li>
+              </ul>
+              <ul class="nav"> 
+                <li><a id="main_nav_te" href="/thesauri">Terminology</a></li>
+                <li><a id="main_nav_ct" href="/cdisc_terms/history">CDISC Terminology</a></li>
+              </ul>
+              <ul class="nav"> 
+                <li><a id="main_nav_bct" href="/biomedical_concept_templates">Biomedical Concept Templates</a></li>
+                <li><a id="main_nav_bc" href="/biomedical_concepts">Biomedical Concepts</a></li>
+              </ul>
+              <ul class="nav"> 
+                <li><a id="main_nav_f" href="/forms">Forms</a></li>
+              </ul>
+              <ul class="nav"> 
+                <li><a id="main_nav_sm" href="/sdtm_models/history">CDISC SDTM Model</a></li>
+                <li><a id="main_nav_ig" href="/sdtm_igs/history">CDISC SDTM IGs</a></li>
+                <li><a id="main_nav_sd" href="/sdtm_user_domains">Domains</a></li>
+              </ul>
+          </div>
+        </div>
+				<div id="main_area" class="col-md-10">
+          <div id="datatables">
+            <!-- Datatables page length options-->
+            <script>
+//<![CDATA[
+var pageLength = 25;
+//]]>
+</script>
+            <script>
+//<![CDATA[
+var pageSettings = [[5,10,15,25,50,100,-1], ["5","10","15","25","50","100","All"]];
+//]]>
+</script>
+          </div>
+          <div id="alerts">
+          </div>
+  				<h3>CRF: BC Demonstration <small>BC DEMO (V0.1.0, 1, Incomplete)</small></h3>
+<div class="col-md-8">
+    <style>table.crf-input-field { border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;}
+table.crf-input-field tr td { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 8pt; text-align: center; vertical-align: center; padding: 5px; }
+table.crf-input-field td:not(:last-child){border-right: 1px dashed}
+h4.domain-1 {border-radius: 5px; background: #A3E4D7; padding: 5px; }
+p.domain-1 {border-radius: 5px; background: #A3E4D7; padding: 5px; }
+h4.domain-2 {border-radius: 5px; background: #AED6F1; padding: 5px; }
+p.domain-2 {border-radius: 5px; background: #AED6F1; padding: 5px; }
+h4.domain-3 {border-radius: 5px; background: #D2B4DE; padding: 5px; }
+p.domain-3 {border-radius: 5px; background: #D2B4DE; padding: 5px; }
+h4.domain-4 {border-radius: 5px; background: #FAD7A0; padding: 5px; }
+p.domain-4 {border-radius: 5px; background: #FAD7A0; padding: 5px; }
+h4.domain-5 {border-radius: 5px; background: #F5B7B1; padding: 5px; }
+p.domain-5 {border-radius: 5px; background: #F5B7B1; padding: 5px; }
+h4.domain-other {border-radius: 5px; background: #BDC3C7; padding: 5px; }
+p.domain-other {border-radius: 5px; background: #BDC3C7; padding: 5px; }
+</style><table class="table table-striped table-bordered table-condensed"><tr><td colspan="2"><h4>BC Demonstration</h4></td><td></td></tr><tr><td colspan="3"><h5>Group</h5></td></tr><tr><td colspan="3"><h5>Common Group</h5></td></tr><tr><td colspan="3"><h5>EQ-5D-3L Mobility</h5></td></tr><tr><td>Date & Time</td><td></td><td><table class="crf-input-field"><tr><td>D</td><td>D</td><td>/</td><td>M</td><td>M</td><td>M</td><td>/</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td></td><td>H</td><td>H</td><td>:</td><td>M</td><td>M</td></tr></table></td></tr><tr><td>Mobility</td><td></td><td><p><input type="radio" name="EQ5D3L.MOBILITY.NONE" value="EQ5D3L.MOBILITY.NONE"></input>No problems</p><p><input type="radio" name="EQ5D3L.MOBILITY.SOME" value="EQ5D3L.MOBILITY.SOME"></input>Some problems</p><p><input type="radio" name="EQ5D3L.MOBILITY.CONFINED" value="EQ5D3L.MOBILITY.CONFINED"></input>Confined to bed</p></td></tr><tr><td colspan="3"><h5>EQ-5D-3L Self-Care</h5></td></tr><tr><td>Date & Time</td><td></td><td><table class="crf-input-field"><tr><td>D</td><td>D</td><td>/</td><td>M</td><td>M</td><td>M</td><td>/</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td></td><td>H</td><td>H</td><td>:</td><td>M</td><td>M</td></tr></table></td></tr><tr><td>Self-Care</td><td></td><td><p><input type="radio" name="EQ5D3L.SELFCARE.NONE" value="EQ5D3L.SELFCARE.NONE"></input>No problems</p><p><input type="radio" name="EQ5D3L.SELFCARE.SOME" value="EQ5D3L.SELFCARE.SOME"></input>Some problems</p><p><input type="radio" name="EQ5D3L.SELFCARE.UNABLE" value="EQ5D3L.SELFCARE.UNABLE"></input>Unable to wash/dress</p></td></tr></table><div style='page-break-after:always;'></div></body></html>
+    <a class="btn btn-primary" target="_blank" href="/forms/crf.pdf?id=F-ACME_BCDEMO&amp;namespace=http%3A%2F%2Fwww.assero.co.uk%2FMDRForms%2FACME%2FV1">Report</a>
+    <a class="btn btn-primary" href="http://localhost:3000/forms/view?id=F-ACME_BCDEMO&amp;namespace=http%3A%2F%2Fwww.assero.co.uk%2FMDRForms%2FACME%2FV1">Close</a>
+</div>
+  				<p>&nbsp;</p>
+        </div> 
+      </div>
+    </div>
